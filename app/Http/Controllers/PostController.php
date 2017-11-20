@@ -8,12 +8,20 @@ class PostController extends Controller
 {
     //列表
     public function index(){
-        return view("post/index");
+        $posts = [
+            ['title' => "this is title 1",],
+            ["title" => "this is title 2"],
+            ["title" => "this is title 3"],
+            ["title" => "this is title 4"],
+            ["title" => "this is title 5"],
+        ];
+        //compact想模板传递参数，compact可以传递多个参数
+        return view("post/index",compact('posts'));
     }
 
     //详情页面
     public function show(){
-        return view("post/show");
+        return view("post/show",['title' => 'this is title','isshow' => false]);
     }
 
     //创建页面
