@@ -3,18 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Post;
 class PostController extends Controller
 {
     //列表
     public function index(){
-        $posts = [
-            ['title' => "this is title 1",],
-            ["title" => "this is title 2"],
-            ["title" => "this is title 3"],
-            ["title" => "this is title 4"],
-            ["title" => "this is title 5"],
-        ];
+
+        $posts = Post::orderBy("created_at","desc")->paginate(8);
         //compact想模板传递参数，compact可以传递多个参数
         return view("post/index",compact('posts'));
     }
