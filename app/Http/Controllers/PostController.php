@@ -10,7 +10,13 @@ class PostController extends Controller
     public function index(){
 
         $posts = Post::orderBy("created_at","desc")->paginate(8);
-        //compact想模板传递参数，compact可以传递多个参数
+//        $posts = [
+//            ['title','asdfsaf'],
+//            ['id','asdfsaf'],
+//            ['created_at','asdfsaf'],
+//            ['content','asdfsaf'],
+//        ];
+//        compact想模板传递参数，compact可以传递多个参数
         return view("post/index",compact('posts'));
     }
 
